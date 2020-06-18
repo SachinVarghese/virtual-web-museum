@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="open-url-video" src="https://mediaarchive.cern.ch/MediaArchive/Photo/Public/1994/9407011/9407011_31/9407011_31-A5-at-72-dpi.jpg"></img>
+      </a-assets>
+      <a-box
+        color="red"
+        position="6 2 -5"
+        rotation="0 45 45"
+        scale="2 2 2"
+      ></a-box>
+      <a-video
+        autoplay
+        scale="4 2 1"
+        position="0 2 -3"
+        src="#open-url-video"
+      ></a-video>
+      <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
+    </a-scene>
+  </body>
+</html>

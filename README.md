@@ -1,13 +1,21 @@
-# web-virtual-museum
+# Virtual-web-museum
 
-### Setup
+## Setup and Preview
+
+### Pre-requisites
+
+- NodeJS
+- NPM CLI
+
+### Run server locally
 
 ```
-python -m SimpleHTTPServer 8000
+npm i
+node .
 ```
 
 Go to `http://localhost:8000/`
 
-### Links
+## Links
 
 - https://home.cern/science/computing/birth-web

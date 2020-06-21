@@ -4,39 +4,72 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script>
+      window.museumSocket = io({
+        reconnectionAttempts: 5,
+      });
+    </script>
   </head>
   <body>
+    <script src="position.js"></script>
+    <script src="chat.js"></script>
     <script src="socket.js"></script>
-    <a-scene connect-socket="Hello TBL">
+    <script src="speech.js"></script>
+    <a-scene connect-socket="New visitor joined">
       <a-assets>
+        <a-asset-item
+          id="visitor"
+          src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/RiggedFigure/glTF/RiggedFigure.gltf"
+        ></a-asset-item>
         <img
           id="open-url-video"
           src="https://mediaarchive.cern.ch/MediaArchive/Photo/Public/1994/9407011/9407011_31/9407011_31-A5-at-72-dpi.jpg"
         />
       </a-assets>
-      <!-- <a-box
-        color="red"
-        position="6 2 -5"
-        rotation="0 45 45"
-        scale="2 2 2"
-      ></a-box> -->
       <a-video
         autoplay
         scale="4 2 1"
         position="0 2 -3"
         src="#open-url-video"
       ></a-video>
-      <!-- <a-entity
-        position="33 0 -33"
-        rotation="0 180 0"
-        look-controls
-        id="camera"
-        camera="userHeight: 1.6"
-        listener
-      >
-        <a-entity text="value: HELLO; color: red; width: 2;" position="0 0 -1">
+      <a-camera>
+        <a-entity
+          scale="0.5 1 1"
+          position="1 0 -1"
+          id="chatPanel"
+          geometry="primitive:plane"
+          material="color: grey; opacity: 0.7"
+        >
+          <a-text
+            scale="0.35 0.2 1"
+            align="center"
+            position="0 0.4 0"
+            value="Virtual web museum"
+          ></a-text>
+          <a-text
+            scale="0.35 0.2 1"
+            align="center"
+            position="0 0.3 0"
+            id="visitorNumber"
+            value="Total visitors : 1"
+          ></a-text>
+          <a-entity
+            position="0 0.2 0"
+            id="chatTrail"
+            material="color: black; opacity: 0.7"
+          >
+            <a-text
+              scale="0.35 0.2 1"
+              color="pink"
+              align="center"
+              value="Chat"
+            ></a-text
+          ></a-entity>
         </a-entity>
-      </a-entity> -->
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-entity id="positionEnv" material="color: black; opacity: 0.7">
+      </a-entity>
       <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
     </a-scene>
   </body>
